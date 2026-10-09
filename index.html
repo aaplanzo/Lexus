@@ -34,6 +34,9 @@ h1{font-size:clamp(3.2rem,11vw,7.5rem);letter-spacing:-.01em}
 h2{font-size:clamp(2rem,5vw,3.2rem)}
 p{margin:0}
 .eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.ty-rest{visibility:hidden}
+.ty-caret{display:inline-block;width:0;height:.8em;border-left:.06em solid var(--go);margin-left:.03em;vertical-align:baseline;animation:blink .7s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
 .lede{max-width:60ch;color:var(--muted);font-size:1.08rem}
 .num{font-family:var(--mono);font-variant-numeric:tabular-nums}
 a{color:inherit}
@@ -130,7 +133,7 @@ dialog .stack{display:flex;flex-direction:column;gap:14px}
 .err{color:var(--taken);font-weight:500}
 textarea{width:100%;min-height:150px;font-family:var(--mono);font-size:.85rem;background:var(--bg);color:var(--ink);border:1px solid var(--line);padding:10px;resize:vertical}
 
-.lap{background:var(--map-bg);color:var(--map-ink);padding:18px;display:flex;flex-direction:column;gap:10px;border-radius:2px;overflow:hidden}
+.lap{scroll-margin-top:12px;background:var(--map-bg);color:var(--map-ink);padding:18px;display:flex;flex-direction:column;gap:10px;border-radius:2px;overflow:hidden}
 .hud{display:flex;flex-wrap:wrap;gap:8px 28px;align-items:flex-end;justify-content:space-between}
 .hud .stats{display:flex;flex-wrap:wrap;gap:8px 28px}
 .hud .stat{display:flex;flex-direction:column;min-width:0}
@@ -176,7 +179,7 @@ tr.legrow td{transition:color .3s} tr.legrow.active td{color:var(--go);font-weig
 
   <div class="hero">
     <p class="eyebrow">Fixed price &middot; all or nothing</p>
-    <h1>Your brand on my GX&nbsp;550.</h1>
+    <h1 id="headline">Your brand on my GX&nbsp;550.</h1>
     <p class="lede">Twelve placements on a Lexus GX 550 Overtrail+ in Earth, driven around the full edge of the lower 48: out of St.&nbsp;Petersburg, up the Atlantic, across the Canadian border, down the Pacific Coast Highway and home along the Mexican border and the Gulf. Each spot has one price. Nobody is charged unless all twelve are reserved.</p>
     <div class="fund" aria-live="polite">
       <div class="fund-top"><span class="big num" id="raised">$0</span><span class="num" id="target">of $175,000 reserved</span></div>
@@ -609,10 +612,46 @@ $("copyaddr").addEventListener("click",e=>copy(CONTACT, null, t=>{ e.target.text
   draw(1,false);
   document.getElementById("replay").addEventListener("click",play);
   const calm = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if(!calm && "IntersectionObserver" in window){
-    const io=new IntersectionObserver(es=>{ if(es.some(e=>e.isIntersecting)){ io.disconnect(); play(); } },{threshold:.5});
-    io.observe(document.getElementById("lapmap"));
+  window.__lap = {play};
+})();
+
+// ---- Intro: type the headline, then glide to the map and run the lap ----
+(function(){
+  const h = document.getElementById("headline"), lap = document.getElementById("lap"), map = document.getElementById("lapmap");
+  const calm = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+  if(!h || !lap || calm) return;
+  const full = h.textContent;
+  let moved = false, typed = false, visible = false, started = false;
+  const startLap = () => { if(started) return; started = true; window.__lap && window.__lap.play(); };
+  // If the visitor scrolls on their own, leave the page where they put it.
+  ["wheel","touchstart","keydown"].forEach(ev=>window.addEventListener(ev, ()=>{ moved = true; }, {passive:true, once:true}));
+  if("IntersectionObserver" in window){
+    new IntersectionObserver(es=>{ visible = es.some(e=>e.isIntersecting); if(visible && typed && moved) startLap(); }, {threshold:.5}).observe(map);
   }
+  const done = document.createElement("span"), caret = document.createElement("span"), rest = document.createElement("span");
+  caret.className = "ty-caret"; rest.className = "ty-rest"; caret.setAttribute("aria-hidden","true");
+  h.setAttribute("aria-label", full.replace(/\u00a0/g," "));
+  rest.textContent = full; h.textContent = ""; h.append(done, caret, rest);
+  let i = 0;
+  function finish(){
+    typed = true; caret.remove();
+    if(moved){ if(visible) startLap(); return; }
+    // A slow, eased glide down to the map, then the lap starts.
+    const r = lap.getBoundingClientRect(), tall = r.height > window.innerHeight;
+    const from = window.scrollY, to = Math.max(0, from + r.top - (tall ? 12 : (window.innerHeight - r.height)/2));
+    const t0 = performance.now(), DUR = 1400;
+    (function glide(now){
+      if(moved){ if(visible) startLap(); return; }
+      const p = Math.min(1, Math.max(0, (now - t0)/DUR)), e = p<.5 ? 4*p*p*p : 1 - Math.pow(-2*p+2, 3)/2;
+      window.scrollTo(0, from + (to - from)*e);
+      if(p<1) requestAnimationFrame(glide); else startLap();
+    })(t0);
+  }
+  function step(){
+    i++; done.textContent = full.slice(0,i); rest.textContent = full.slice(i);
+    if(i < full.length) setTimeout(step, full[i-1]===" " ? 95 : 58); else setTimeout(finish, 2000);
+  }
+  setTimeout(step, 350);
 })();
 </script>
 </body>
