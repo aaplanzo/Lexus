@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Your brand on my GX 550</title>
+<meta name="description" content="Fixed-price sponsor placements on a Lexus GX 550 Overtrail+ driven 10,000 miles around the edge of the lower 48. All or nothing.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=Public+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>html{color-scheme:light dark}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<style>
+/* Layout: one narrow highway-sign column. Big condensed sign type up top, the truck diagram
+   beside the price list, then route, budget, terms. Green is used only for "open / go". */
+:root{
+  --bg:#e9e7df; --surface:#f6f5f0; --ink:#17181a; --muted:#5b5d58; --line:#c9c6b9;
+  --earth:#a9946c; --earth-deep:#8a7751; --roof:#16171a; --go:#12643f; --go-ink:#ffffff; --taken:#8b2e1f; --held:#4f342d; --held-ink:#eadcd5;
+  --map-bg:#0d0f11; --map-land:#1a1d20; --map-border:#2d3237; --map-route:#e2c88f; --map-ink:#ece7d8; --map-muted:#8b8f95;
+  --display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#131412; --surface:#1c1d1a; --ink:#eeece4; --muted:#a3a398; --line:#34352f;
+  --earth:#b7a27a; --earth-deep:#8f7c57; --roof:#050506; --go:#3fae7b; --go-ink:#06140d; --taken:#e07a66; --held:#5d3f37; --held-ink:#eadcd5; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#131412; --surface:#1c1d1a; --ink:#eeece4; --muted:#a3a398; --line:#34352f;
+  --earth:#b7a27a; --earth-deep:#8f7c57; --roof:#050506; --go:#3fae7b; --go-ink:#06140d; --taken:#e07a66; --held:#5d3f37; --held-ink:#eadcd5; color-scheme:dark }
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:20px;padding-block:0 72px;display:flex;flex-direction:column;gap:72px}
+h1,h2{font-family:var(--display);font-weight:800;text-transform:uppercase;line-height:.92;margin:0;text-wrap:balance}
+h1{font-size:clamp(3.2rem,11vw,7.5rem);letter-spacing:-.01em}
+h2{font-size:clamp(2rem,5vw,3.2rem)}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.lede{max-width:60ch;color:var(--muted);font-size:1.08rem}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--go);outline-offset:2px}
+
+.top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px 16px;padding-block:20px;border-bottom:1px solid var(--line)}
+.top b{font-family:var(--display);font-size:1.25rem;letter-spacing:.04em;text-transform:uppercase}
+.btn{background:var(--go);color:var(--go-ink);border:0;padding:10px 16px;font-weight:700;border-radius:2px}
+.btn{border:1px solid var(--go);text-decoration:none;display:inline-block;line-height:1.3}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.nav{display:flex;flex-wrap:wrap;gap:8px}
+.field select{font:inherit;width:100%;background:var(--bg);color:var(--ink);border:1px solid var(--line);padding:10px;border-radius:2px}
+.note{border-left:3px solid var(--go);padding-left:12px;font-size:.95rem}
+.btn[disabled]{cursor:default;opacity:.6}
+.spot .btn[disabled]{background:var(--held);color:var(--held-ink);border:1px solid var(--held);opacity:1}
+
+.hero{display:flex;flex-direction:column;gap:22px;margin-top:-48px}
+.fund{display:flex;flex-direction:column;gap:8px;max-width:640px}
+.fund-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.fund-top .big{font-family:var(--display);font-weight:800;font-size:2.4rem;line-height:1}
+.bar{height:14px;background:var(--surface);border:1px solid var(--line)}
+.bar i{display:block;height:100%;background:var(--go);width:0}
+.fund small{color:var(--muted)}
+
+.shot{display:flex;flex-direction:column;gap:8px}
+.shot figcaption{color:var(--muted);font-size:.9rem}
+.heroimg{display:block;width:100%;max-width:430px;height:auto;margin-inline:auto}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:36px;align-items:start}
+.diagram{position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px);display:flex;flex-direction:column;gap:14px;min-width:0}
+.diagram svg{width:100%;height:auto;display:block}
+.diagram figcaption{color:var(--muted);font-size:.9rem}
+.view{display:flex;flex-direction:column;gap:6px;min-width:0}
+.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:end}
+.zone{fill:var(--surface);fill-opacity:.28;stroke:var(--roof);stroke-width:1.6;stroke-dasharray:5 4;vector-effect:non-scaling-stroke;transition:fill-opacity .15s}
+.zone.on{fill:var(--go);fill-opacity:.72;stroke:var(--go);stroke-dasharray:none}
+.zone.held{fill:var(--held);fill-opacity:.82;stroke:var(--held);stroke-dasharray:none}
+.tag circle{fill:var(--surface);stroke:var(--ink);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.tag text{font-family:var(--mono);font-size:32px;font-weight:500;fill:var(--ink);text-anchor:middle;dominant-baseline:central}
+
+.spots{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink);min-width:0}
+.spot{display:grid;grid-template-columns:34px 112px minmax(0,1fr) auto;gap:6px 14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.spot .key{font-family:var(--mono);width:28px;height:28px;border:1.2px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-size:.8rem}
+.spot h3{margin:0;font-size:1.05rem;font-weight:700}
+.spot p{color:var(--muted);font-size:.9rem}
+.spot .buy{display:flex;align-items:center;gap:14px;justify-self:end}
+.spot .price{font-size:1.05rem;font-weight:500}
+.spot:hover,.spot:focus-within{background:var(--surface)}
+.thumb{width:112px;height:64px;display:block}
+.tz{fill:var(--go);fill-opacity:.88;stroke:var(--go);stroke-width:2;vector-effect:non-scaling-stroke}
+.spot.held .tz{fill:var(--held);stroke:var(--held)}
+.spot.held .thumb{opacity:.7}
+.spot.held h3,.spot.held p,.spot.held .price{color:var(--held);opacity:.75}
+.spot.held .price{text-decoration:line-through}
+.spot.held .key{background:var(--held);border-color:var(--held);color:var(--held-ink)}
+.rel{background:none;border:0;padding:0;color:var(--muted);text-decoration:underline;font-size:.85rem}
+
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px}
+.cols h3{font-family:var(--display);text-transform:uppercase;font-size:1.5rem;margin:0 0 6px;line-height:1}
+.cols p{color:var(--muted)}
+section{display:flex;flex-direction:column;gap:22px}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:420px}
+th,td{text-align:left;padding:10px 0;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:400}
+td.r,th.r{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap;padding-left:16px}
+tfoot td{border-top:2px solid var(--ink);border-bottom:0;font-weight:700}
+.terms{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:8px;max-width:70ch}
+.terms li::marker{color:var(--muted)}
+.contact{border-top:2px solid var(--ink);padding-top:22px}
+.addr{font-family:var(--mono);font-size:1.05rem;user-select:all;overflow-wrap:anywhere}
+.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+
+dialog{border:1px solid var(--ink);background:var(--surface);color:var(--ink);padding:0;max-width:min(520px,calc(100vw - 32px));width:100%}
+dialog > .stack{padding:24px}
+dialog::backdrop{background:rgba(0,0,0,.55)}
+dialog[open]{animation:dlg-in .18s cubic-bezier(.2,.8,.2,1)}
+dialog[open]::backdrop{animation:fade-in .18s ease-out}
+dialog.closing{animation:dlg-out .14s ease-in forwards}
+dialog.closing::backdrop{animation:fade-out .14s ease-in forwards}
+@keyframes dlg-in{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes dlg-out{from{opacity:1;transform:none}to{opacity:0;transform:translateY(10px) scale(.97)}}
+@keyframes fade-in{from{opacity:0}to{opacity:1}}
+@keyframes fade-out{from{opacity:1}to{opacity:0}}
+section,.hero{scroll-margin-top:16px}
+.spot{scroll-margin-top:24px}
+dialog h2{font-size:2rem}
+dialog .stack{display:flex;flex-direction:column;gap:14px}
+.field{display:flex;flex-direction:column;gap:4px}
+.field label{font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.field input{font:inherit;width:100%;background:var(--bg);color:var(--ink);border:1px solid var(--line);padding:10px;border-radius:2px}
+.check{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:start;font-size:.92rem}
+.check input{width:18px;height:18px;margin-top:3px;accent-color:var(--go)}
+.err{color:var(--taken);font-weight:500}
+textarea{width:100%;min-height:150px;font-family:var(--mono);font-size:.85rem;background:var(--bg);color:var(--ink);border:1px solid var(--line);padding:10px;resize:vertical}
+
+.lap{background:var(--map-bg);color:var(--map-ink);padding:18px;display:flex;flex-direction:column;gap:10px;border-radius:2px;overflow:hidden}
+.hud{display:flex;flex-wrap:wrap;gap:8px 28px;align-items:flex-end;justify-content:space-between}
+.hud .stats{display:flex;flex-wrap:wrap;gap:8px 28px}
+.hud .stat{display:flex;flex-direction:column;min-width:0}
+.hud .lbl{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--map-muted)}
+.hud .val{font-family:var(--display);font-weight:800;font-size:clamp(1.6rem,5vw,2.6rem);line-height:1;font-variant-numeric:tabular-nums;text-transform:uppercase}
+.hud .val.go{color:var(--map-route)}
+.lap .replay{background:transparent;color:var(--map-ink);border:1px solid var(--map-muted);padding:8px 14px;font-weight:700;border-radius:2px}
+.lap .replay:focus-visible{outline-color:var(--map-route)}
+.lap svg{display:block;width:100%;height:auto}
+.m-land{fill:var(--map-land)} .m-border{fill:none;stroke:var(--map-border);stroke-width:1}
+.m-ghost{fill:none;stroke:var(--map-muted);stroke-width:1.5;stroke-dasharray:2 7;stroke-linecap:round;opacity:.7}
+.m-route,.m-glow{fill:none;stroke:var(--map-route);stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:0}
+.m-route{stroke-width:3.2} .m-glow{stroke-width:11;opacity:.55}
+.m-city circle{fill:var(--map-bg);stroke:var(--map-route);stroke-width:2}
+.m-city text{font-family:var(--mono);font-size:17px;fill:var(--map-ink);paint-order:stroke;stroke:var(--map-bg);stroke-width:5px;stroke-linejoin:round}
+.m-city{transition:opacity .35s} .m-city.wait{opacity:.16}
+.m-city.hit circle{fill:var(--map-route)}
+.m-head .core{fill:var(--map-ink)} .m-head .halo{fill:var(--map-route);opacity:.35}
+.m-head .ring{fill:none;stroke:var(--map-route);stroke-width:2;transform-box:fill-box;transform-origin:center;animation:ping 1.6s ease-out infinite}
+@keyframes ping{from{transform:scale(.4);opacity:.9}to{transform:scale(2.6);opacity:0}}
+tr.legrow td{transition:color .3s} tr.legrow.active td{color:var(--go);font-weight:700}
+@media (max-width:760px){ .m-city.minor{display:none} .m-city text{font-size:32px;stroke-width:8px} .m-city circle{stroke-width:3} .m-route{stroke-width:5} .lap{padding:14px} }
+@media (prefers-reduced-motion:reduce){ .m-head .ring{animation:none} }
+
+@media (max-width:760px){
+  .grid{grid-template-columns:minmax(0,1fr)} .diagram{position:static}
+  .spot{grid-template-columns:34px 92px minmax(0,1fr)} .thumb{width:92px;height:54px} .spot .buy{grid-column:2 / -1;justify-self:start}
+  .wrap{gap:56px} .hero{margin-top:-36px}
+}
+@media (prefers-reduced-motion:reduce){ .zone{transition:none} dialog[open],dialog.closing,dialog[open]::backdrop,dialog.closing::backdrop{animation:none} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <b>Brand My GX 550</b>
+    <nav class="nav" aria-label="Actions">
+      <a class="btn ghost" href="#spots">See the spots</a>
+      <a class="btn" id="nav-reserve" href="#spot-A">Reserve</a>
+      <button class="btn ghost" id="nav-whole" type="button">Sponsor the whole project</button>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <p class="eyebrow">Fixed price &middot; all or nothing</p>
+    <h1>Your brand on my GX&nbsp;550.</h1>
+    <p class="lede">Twelve placements on a Lexus GX 550 Overtrail+ in Earth, driven around the full edge of the lower 48: out of St.&nbsp;Petersburg, up the Atlantic, across the Canadian border, down the Pacific Coast Highway and home along the Mexican border and the Gulf. Each spot has one price. Nobody is charged unless all twelve are reserved.</p>
+    <div class="fund" aria-live="polite">
+      <div class="fund-top"><span class="big num" id="raised">$0</span><span class="num" id="target">of $175,000 reserved</span></div>
+      <div class="bar"><i id="barfill"></i></div>
+      <small id="fundnote">12 of 12 spots open. The truck is bought the day the target is met.</small>
+    </div>
+    <div class="lap" id="lap">
+      <div class="hud">
+        <div class="stats">
+          <div class="stat"><span class="lbl">Miles</span><span class="val go num" id="hud-mi">10,173</span></div>
+          <div class="stat"><span class="lbl">Day</span><span class="val num" id="hud-day">90 / 90</span></div>
+          <div class="stat"><span class="lbl">Leg</span><span class="val" id="hud-leg">Home</span></div>
+        </div>
+        <button class="replay" id="replay" type="button">Replay the lap</button>
+      </div>
+      <svg id="lapmap" viewBox="-20 -14 1075 640" role="img" aria-label="A Lexus GX 550 Overtrail+ in Earth set inside a map of the lower 48 states, with the route traced clockwise around the edge from St. Petersburg, Florida">
+        <defs><filter id="glow" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="7"/></filter></defs>
+        <path class="m-land" d="M648,492L648,492L648,492ZM780,466L783,476L787,486L790,491L795,500L801,508L805,511L806,514L805,517L807,522L812,529L815,537L820,544L822,549L823,554L823,565L824,571L824,575L822,574L821,580L822,581L821,583L822,583L824,578L824,580L822,587L818,592L816,593L819,589L820,586L818,586L814,588L812,587L811,589L807,590L805,588L805,585L801,578L798,576L793,574L792,575L789,571L788,566L785,563L782,561L781,563L780,559L781,555L780,552L779,553L780,556L778,557L773,551L769,546L766,543L767,541L771,533L769,532L770,534L768,533L768,531L765,530L764,532L766,532L767,534L767,537L765,537L762,533L762,530L761,526L762,527L764,521L764,517L761,512L762,510L760,508L759,505L755,505L754,506L753,503L751,503L750,500L746,498L745,495L743,494L740,491L732,487L730,488L727,487L726,490L726,492L723,492L716,497L716,496L714,498L712,498L714,500L719,498L714,501L710,499L707,500L706,496L706,495L707,499L708,497L706,494L696,488L689,486L681,486L668,489L664,490L658,492L659,490L656,488L655,482L653,482L652,486L652,490L649,489L646,489L644,491L642,490L640,491L636,490L633,491L627,494L625,495L623,496L621,498L619,499L619,501L621,501L622,503L624,502L624,500L626,498L628,498L627,499L628,501L630,499L631,502L628,503L627,507L625,506L625,507L623,508L624,509L623,510L625,511L626,513L630,513L632,515L632,514L635,518L634,522L632,520L629,524L631,519L629,519L627,517L624,516L620,515L613,521L610,516L608,515L607,517L605,517L605,518L601,523L598,520L595,520L592,519L590,517L592,516L595,518L594,516L592,514L590,515L590,513L588,514L586,512L586,510L584,510L584,508L582,508L579,509L580,506L579,506L574,508L573,508L575,511L571,513L565,512L558,509L554,508L548,508L542,509L541,510L535,511L522,517L527,513L522,514L523,512L524,509L521,509L520,511L518,511L517,514L520,515L520,519L516,523L515,522L515,524L518,522L522,518L523,519L517,523L510,530L509,530L502,534L496,537L492,539L489,542L485,544L480,548L478,551L475,555L472,562L470,566L470,570L470,574L473,587L474,592L472,582L470,576L470,569L470,564L472,560L475,554L476,551L478,550L480,546L483,545L486,542L489,541L489,540L486,542L484,542L484,540L482,540L482,544L479,546L477,545L474,547L475,548L477,547L477,549L474,553L473,552L469,552L470,553L470,555L473,556L471,559L469,564L467,565L467,563L465,566L469,566L469,572L468,576L469,583L470,583L472,588L471,592L474,593L474,595L472,595L470,596L470,598L467,597L464,593L461,593L454,593L452,592L447,589L443,588L440,585L439,585L434,584L435,582L433,581L433,577L431,574L428,570L428,567L427,564L428,559L425,556L423,555L420,552L419,548L418,548L416,544L414,543L412,541L410,534L408,532L408,530L406,526L405,522L403,520L403,519L399,516L398,513L394,511L393,509L390,506L386,506L383,505L378,505L377,503L373,503L372,505L370,504L366,505L364,510L363,514L362,514L361,517L359,517L357,520L357,522L353,521L351,520L348,517L345,516L343,514L340,513L337,511L335,508L334,508L330,504L330,501L328,498L327,495L328,492L325,487L325,483L323,480L316,475L313,472L312,470L309,468L306,463L302,460L299,454L296,452L264,448L263,458L247,456L229,454L208,450L172,429L142,412L143,409L145,407L99,402L100,400L98,398L99,394L99,388L97,382L92,376L90,374L88,371L86,370L85,371L82,369L83,367L82,362L78,361L76,362L70,357L69,354L65,349L59,348L55,345L49,344L49,342L46,340L48,338L49,335L48,333L50,328L48,327L46,325L47,321L45,319L43,315L42,313L41,311L40,308L40,305L39,304L37,300L35,296L35,292L36,289L38,289L40,286L38,281L35,281L34,279L31,274L33,271L32,267L33,261L35,261L35,266L36,267L38,270L39,265L36,262L37,259L36,257L39,256L38,253L36,254L36,257L33,260L31,257L29,255L26,253L28,250L28,248L27,247L27,243L24,240L23,236L21,232L20,229L22,227L21,219L24,216L24,209L22,202L18,197L19,193L21,190L27,184L28,182L28,179L29,177L31,173L32,166L30,164L33,160L31,157L31,153L32,149L34,146L34,145L33,142L33,140L35,137L38,131L43,126L45,121L53,103L54,99L57,92L61,81L61,79L62,75L64,74L64,69L65,71L68,71L71,70L69,69L66,69L64,67L64,65L66,60L66,61L65,66L66,66L66,63L68,63L67,60L70,59L67,59L66,57L67,55L71,54L67,51L67,45L67,43L68,34L66,30L65,28L66,23L68,21L67,19L70,20L72,23L74,24L77,27L81,28L82,29L87,31L89,31L90,33L95,33L94,35L95,38L92,41L90,42L85,46L84,48L88,44L92,43L92,42L97,39L95,46L94,47L92,52L89,55L88,51L88,55L89,56L93,52L94,53L96,52L96,47L98,42L102,38L100,35L101,33L98,34L99,32L101,31L100,27L98,28L98,25L101,27L101,25L102,24L102,23L102,21L99,19L99,15L100,14L115,19L140,25L166,32L184,36L198,39L210,42L233,46L265,52L285,55L303,57L326,60L340,62L364,65L377,66L404,68L421,69L445,70L469,71L479,71L492,71L511,71L511,62L514,62L516,64L518,73L518,76L520,77L524,77L525,78L531,79L532,81L536,80L536,79L540,78L544,79L548,80L549,80L548,82L551,82L553,87L555,87L555,84L558,84L559,86L561,87L563,87L566,91L571,90L575,86L577,86L578,89L588,88L592,91L594,90L596,91L590,94L582,98L579,99L573,106L570,109L565,114L559,119L560,121L563,121L568,120L573,117L573,117L576,115L578,115L580,116L578,119L578,120L577,123L580,122L580,120L583,122L585,123L591,120L594,117L597,116L601,116L603,114L605,112L607,112L608,109L613,106L615,103L619,101L624,100L626,101L622,102L618,108L615,112L615,115L616,117L619,112L620,113L624,112L628,114L633,121L637,121L638,120L640,121L644,121L643,119L645,121L647,118L652,115L656,114L662,114L665,112L670,111L669,113L670,118L673,118L676,117L676,118L678,117L679,116L683,115L684,121L682,123L686,124L687,126L690,126L690,124L693,124L695,126L694,128L689,127L685,127L681,129L676,127L675,129L676,131L674,131L671,128L666,127L663,127L661,130L657,131L657,132L653,131L651,133L650,135L648,137L645,139L646,136L648,134L644,135L643,138L641,138L640,136L639,136L640,138L638,140L634,149L632,152L632,153L632,156L629,157L629,158L627,162L626,166L628,166L631,163L633,159L636,157L638,153L638,151L640,150L640,149L642,148L641,152L639,155L639,157L638,159L635,165L635,170L635,174L633,176L632,181L633,185L632,188L631,195L632,199L632,201L634,206L634,210L634,212L634,217L635,219L637,222L639,227L640,230L642,231L645,231L647,231L652,228L655,224L657,219L659,216L660,210L660,205L659,198L656,191L652,184L654,180L652,175L653,173L655,168L655,163L655,160L657,159L657,155L659,153L661,154L664,148L665,151L664,156L665,157L666,152L666,158L668,153L667,146L670,143L674,142L672,141L670,138L673,134L675,133L681,135L685,135L687,138L690,138L692,139L695,140L697,140L701,147L699,146L699,149L701,150L702,154L702,157L702,162L699,166L699,169L698,171L695,171L694,173L694,177L695,179L699,180L701,177L702,173L703,174L705,171L710,168L713,169L715,172L716,177L718,181L719,186L722,191L721,200L719,202L718,200L719,199L716,199L717,201L715,203L715,207L713,208L712,210L713,213L712,215L710,217L708,222L715,224L718,225L719,224L723,227L726,227L733,223L738,223L742,218L748,213L750,212L756,209L759,207L768,200L772,196L773,194L776,192L778,189L780,186L778,182L777,182L775,176L784,172L792,170L796,170L800,172L802,171L806,169L809,169L813,167L814,165L817,162L819,161L819,158L818,155L817,154L819,152L818,151L815,150L815,146L817,144L820,141L822,138L825,132L829,128L832,124L834,123L837,123L845,121L858,118L865,116L874,114L886,111L887,105L888,103L891,104L891,102L892,101L895,103L894,99L897,99L895,96L897,92L899,90L898,89L900,86L898,83L899,80L898,80L898,76L900,74L899,67L906,48L909,48L910,51L912,52L917,49L920,48L920,46L923,46L930,50L937,74L939,80L942,81L945,80L946,82L945,83L946,84L946,87L949,90L950,88L952,88L957,95L955,99L954,100L953,99L950,106L949,104L947,104L946,107L944,108L944,110L941,110L941,113L939,114L937,112L939,110L937,110L935,111L937,115L936,117L937,118L937,120L936,118L934,116L935,115L932,114L931,110L930,112L929,113L930,114L929,120L930,123L928,125L926,126L924,128L921,129L920,132L918,131L917,133L915,134L915,137L913,138L913,142L911,143L911,146L910,150L909,155L911,159L914,158L913,160L911,162L911,163L909,166L910,169L912,167L914,168L917,171L917,174L919,174L920,177L922,178L925,177L929,175L928,172L927,173L926,170L928,171L931,177L926,180L925,180L923,182L920,183L919,180L918,179L918,182L915,183L915,185L913,186L912,188L910,184L911,187L909,188L910,184L911,183L910,182L907,181L908,188L908,191L902,193L900,193L893,197L887,198L885,199L885,198L882,203L878,205L874,208L873,210L874,211L877,208L882,208L883,207L889,205L891,204L895,200L896,199L896,201L898,201L900,202L903,199L896,206L886,213L878,217L874,218L872,219L870,219L869,216L869,217L868,220L867,221L867,222L871,222L872,225L872,229L873,237L871,245L870,247L867,251L865,257L863,259L863,254L860,253L859,254L852,250L850,250L849,246L849,246L850,244L848,247L849,249L853,252L854,255L855,258L857,261L860,263L861,263L864,270L863,279L863,280L861,284L860,285L858,288L859,292L857,301L855,304L853,301L853,292L856,286L854,285L855,284L853,284L852,285L851,282L850,280L851,279L849,278L848,276L848,279L846,279L841,274L843,274L842,271L846,271L840,268L841,266L842,266L841,264L839,266L839,262L841,263L842,260L839,259L840,255L842,253L843,249L841,250L842,252L839,254L837,254L838,257L836,259L833,258L837,260L838,263L836,269L837,270L838,274L841,277L840,279L843,282L844,284L841,283L838,281L835,282L831,280L830,278L827,280L825,278L827,274L825,275L825,279L826,281L830,279L832,283L834,283L838,283L840,285L846,287L845,289L846,293L845,294L842,294L840,291L838,290L835,288L838,291L840,292L842,295L846,295L848,299L848,300L845,299L845,300L847,302L844,303L846,303L849,305L849,307L847,309L843,306L842,304L840,305L838,304L837,305L841,306L841,304L843,308L846,309L846,310L849,310L849,308L855,308L859,316L861,320L864,325L868,332L866,328L864,328L860,319L859,318L856,317L859,320L862,325L861,325L859,323L858,325L854,323L857,326L855,327L850,326L853,328L851,330L849,331L847,330L845,328L847,333L852,331L853,331L856,330L859,330L859,332L860,337L860,336L860,330L863,329L866,335L865,337L863,338L861,342L860,344L853,345L851,342L850,342L852,345L848,345L843,343L846,345L850,346L853,346L854,347L853,352L850,355L846,353L846,355L850,356L852,354L855,353L855,351L857,353L859,352L859,354L857,356L856,360L862,350L863,350L858,357L856,362L856,361L851,361L847,363L844,365L838,370L836,374L834,377L833,384L829,383L825,384L823,386L820,388L816,392L813,399L814,404L811,406L811,408L808,408L806,410L807,411L803,415L801,419L797,421L795,423L792,424L793,425L793,427L790,429L788,427L787,428L790,430L786,433L786,435L787,436L783,442L782,447L781,451L781,454L780,456L780,459L778,460L780,461ZM815,594L815,594L815,594ZM813,596L813,596L813,596ZM807,599L811,597L812,597L808,599ZM794,604L795,602L800,598L804,599L805,600L802,601L796,604ZM790,605L790,605L790,605ZM786,605L786,605L786,605ZM777,558L777,558L777,558ZM770,606L770,606L770,606ZM720,495L720,495L720,495ZM940,115L940,115L940,115ZM938,116L938,114L940,116ZM936,112L936,112L936,112ZM932,116L932,116L932,116ZM934,125L934,125L934,125ZM931,119L933,117L934,119L932,121ZM930,116L930,113L931,116ZM928,187L931,186L932,184L933,186L931,188ZM918,188L919,188L921,184L925,187ZM864,329L866,329L867,331ZM863,350L864,348L871,343L871,336L871,344L867,346ZM77,374L81,377L81,380L79,378L79,376ZM75,384L78,390L76,389ZM65,358L65,358L65,358ZM58,374L58,374L58,374ZM57,355L59,356L63,359L60,359L57,357ZM50,355L54,355L55,358L52,358ZM47,353L49,353L49,354ZM849,285L850,285L849,285ZM847,281L848,280L849,282ZM677,131L682,132L680,133ZM663,133L663,133L663,133ZM662,139L663,135L664,135L665,138ZM661,136L661,136L661,136ZM659,142L659,142L659,142ZM657,150L658,150L658,151ZM655,153L655,153L655,153ZM646,140L646,140L646,140ZM601,92L602,91L610,86L614,84L610,89L605,91L607,92L603,93ZM644,493L644,493L644,493ZM639,493L639,493L639,493ZM635,494L635,494L635,494ZM632,494L632,494L632,494ZM899,196L899,196L899,196ZM897,198L897,198L897,198ZM816,154L816,154L816,154ZM814,154L814,154L814,154ZM721,223L721,223L721,223ZM719,222L719,222L719,222ZM93,51L95,48L94,52ZM99,25L99,25L99,25ZM99,20L99,20L99,20ZM98,23L98,23L98,23ZM95,31L99,28L99,31L98,30L96,32L97,33L97,37L98,35L100,37L99,39L98,39L98,37L96,36L97,33ZM96,18L96,18L96,18ZM94,20L94,20L94,20ZM95,13L95,13L95,13ZM91,21L93,21L96,20L98,22L96,27L92,24ZM91,19L91,19L91,19ZM642,146L642,145L644,145L643,147ZM636,150L636,150L636,150ZM584,113L584,113L584,113ZM583,116L583,116L583,116ZM581,115L581,115L581,115ZM580,117L580,117L580,117ZM580,114L580,114L580,114ZM579,113L581,112L583,113L581,115ZM579,118L582,116L581,118ZM576,114L576,114L576,114ZM638,497L638,497L638,497ZM629,498L631,495L631,497L632,498ZM624,510L624,510L624,510ZM610,521L610,521L610,521ZM606,521L606,521L606,521ZM602,522L602,522L602,522ZM577,511L580,511L583,512L580,514ZM908,188L908,188L908,188ZM907,196L907,196L907,196Z"/>
+        <path class="m-border" d="M646,489L642,455L642,444L643,413L644,386L642,384L642,384L666,382L689,380L702,427L704,429L705,432L708,436L707,439L710,440L707,443L707,446L706,450L707,453L708,455L709,457L708,463L708,465L711,469L694,471L682,472L661,474L660,477L662,480L665,481L665,485L666,486L664,490M145,407L149,407L151,404L150,401L147,400L147,399L148,395L147,394L148,392L150,391L152,389L154,386L154,380L156,379L157,377L160,376L163,374L160,370L158,363L156,359L157,356L157,354L159,353L159,349L158,345L159,342L159,338L160,336L159,335L160,331L163,331L167,331L168,335L170,335L173,331L176,313L203,318L239,324L265,328L251,424L247,456M711,469L714,475L766,471L766,475L767,476L770,476L770,471L769,469L769,466L770,465L775,466L780,466M689,380L713,377L726,375L735,374L735,375L732,379L732,382L735,383L738,385L741,385L744,389L744,391L747,394L748,396L755,400L756,402L759,403L762,406L762,408L764,409L764,410L766,412L771,414L771,416L773,418L774,423L777,424L781,430L780,431L781,433L786,435M652,228L669,226L686,224L686,225L688,247L693,284L691,286L693,287L692,289L694,289L694,292L691,292L688,295L685,294L683,295L684,298L682,300L681,301L680,304L677,305L676,308L676,312L674,313L670,311L669,309L666,312L666,314L662,315L661,313L657,316L655,319L651,316L648,317L647,315L647,318L645,317L643,318L641,317L642,319L639,320L638,317L639,316L639,314L640,312L639,310L640,308L642,309L645,303L645,300L647,298L647,297L646,295L646,293L643,288L645,284L640,230M394,272L422,273L443,274L465,275L495,275L510,275L512,277L515,278L516,278L517,281L516,281L514,286L517,289L519,293L523,294L522,295L523,326L523,344L507,344L489,344L459,344L433,343L402,341L390,341M910,150L908,149L907,147L905,145L895,114L891,102M910,182L908,181L906,179L905,176L899,178L899,178L882,182L871,184L871,183L871,168L884,165L903,161L904,158L906,156L909,155M913,186L912,183L911,183M560,121L559,120L556,122L556,136L556,137L551,139L548,144L548,147L549,147L551,150L550,154L550,158L549,158L550,162L549,166L554,170L557,170L559,173L564,175L565,178L570,182L572,182L576,187L575,191L576,193L549,194L534,195L516,195L491,195L491,154L490,153L487,152L484,147L489,142L489,140L489,137L489,131L487,128L486,123L486,118L485,117L485,102L483,98L481,89L481,87L481,81L481,78L479,71L479,71M850,244L851,241L855,239L855,237L859,232L861,231L854,226L853,224L851,223L850,221L852,216L850,214L851,212L853,209L853,206L855,204L862,207L870,209L869,216M869,217L867,218L867,221M849,246L849,246M713,377L713,371L716,370L717,369L717,366L721,363L726,362L729,359L730,358L733,356L735,356L737,352L738,350L740,348L741,351L743,349L744,347L747,345L749,346L751,346L752,341L755,338L756,334L780,331L794,329L812,326L840,320L842,319L859,316M823,386L798,368L778,371L777,369L774,365L772,367L772,365L749,367L746,368L742,371L735,374M489,140L477,140L460,139L443,139L412,137L392,136L371,134L375,88L377,66M523,344L523,355L527,381L526,421L522,420L521,418L520,418L517,416L516,416L512,413L511,415L507,415L506,414L501,416L499,415L498,416L493,418L492,420L490,418L486,416L485,415L484,417L482,416L481,414L478,417L477,419L476,419L475,414L472,417L471,416L471,415L468,414L467,413L463,416L461,415L462,413L459,412L458,409L458,410L454,409L452,411L450,409L447,409L443,407L439,407L438,404L435,401L435,403L432,402L429,403L426,399L424,398L426,354L396,352L372,351L372,339M768,200L769,206L783,204L800,201L825,196L841,192L843,195L845,194L847,197L848,200L850,202L854,203L855,204M851,241L848,241L847,242L845,245L816,251L782,257L765,260L761,239L756,209M491,195L488,195L489,198L488,200L491,204L490,206L489,210L488,212L491,218L488,218L486,216L487,215L482,212L479,212L476,210L470,210L467,210L466,212L457,207L457,206L434,205L404,204L391,203L365,201L369,156L369,156L371,134M526,421L529,423L532,422L535,423L535,435L535,458L538,460L540,463L540,467L542,469L544,474L545,476L546,480L546,484L544,487L542,490L543,493L542,496L543,497L543,502L541,504L540,506L539,507L541,510M296,452L294,449L295,447L318,449L339,451L363,453L365,430L367,408L371,351L372,351M365,201L361,247M277,237L301,240L333,244L348,245L361,247L382,248L395,249L394,272L391,327L390,341L372,339L349,338L315,334L279,330L265,328L268,302L268,299L271,280L277,237L253,234L244,232L247,210L250,193L256,154L258,142L263,143L289,147L298,148L339,153L339,153L369,156M899,178L901,186L902,191L902,193M874,208L872,206L876,203L874,201L871,184M510,275L508,274L508,272L507,270L505,268L502,262L521,262L545,261L565,260L571,260L576,265L575,268L576,273L577,275L577,276L578,280L583,284L584,286L590,290L591,297L593,298L595,296L598,297L601,298L599,301L600,303L598,309L598,313L602,316L606,321L607,320L612,324L614,326L613,328L615,330L615,332L614,333L617,338L619,340L619,338L621,340L622,340L621,344L622,345L620,346L621,347L620,349L617,349L617,351L616,351L615,352L615,354L614,356L615,357L612,358L614,360L612,363L600,364L603,359L605,357L605,354L604,352L586,353L565,354L550,355L523,355M782,257L784,269L787,266L790,261L792,262L794,257L797,259L800,258L802,255L803,255L805,253L808,255L811,254L811,256L813,258L814,260L813,265L803,259L803,262L802,264L803,266L799,273L797,274L797,277L794,275L792,283L790,286L787,285L786,283L784,283L784,287L780,294L780,297L777,302L776,305L778,306L776,308L777,309L774,312L773,310L769,314L767,313L767,315L761,318L758,316L755,320L753,320L750,319L747,315L747,313L744,313L741,311L740,309L736,306L734,302L734,298L733,295L734,295L738,293L738,290L740,290L739,285L740,284L740,281L741,280L743,280L744,283L746,281L745,278L746,273L748,273L748,271L750,269L752,271L754,269L758,263L759,263L758,260L760,256L759,252L761,247L760,243L759,241L761,239M576,265L577,259L581,258L581,255L584,252L584,248L581,245L582,241L585,240L588,239L593,236L594,233L596,231L596,226L596,224L592,222L590,218L587,216L587,215L618,214L634,212M639,320L637,323L639,327L636,328L632,330L632,332L634,335L633,337L632,337L624,334L623,334L621,338L621,340M612,363L614,365L611,366L613,367L608,369L610,372L608,373L609,374L607,374L608,376L606,376L605,378L607,378L605,381L607,383L605,384L605,386L603,387L604,389L601,391L600,389L601,392L598,393L600,394L598,396L599,397L599,400L595,402L596,403L594,404L594,407L592,408L593,409L590,411L591,412L590,413L592,415L589,415L590,418L587,418L589,420L588,420L588,422L588,423L589,425L591,430L589,431L590,432L589,433L569,434L535,435M33,160L46,164L62,168L84,175L100,179L89,224L83,246L132,319L157,356M864,270L853,273L846,248L845,245M576,193L577,196L579,199L577,202L578,207L580,211L582,212L586,212L587,215M502,262L500,259L501,255L499,245L499,242L496,240L496,236L497,234L495,232L496,230L494,230L493,224L491,221L492,219L491,218M693,284L694,283L696,285L699,283L701,285L703,288L704,290L710,290L712,292L714,293L716,291L721,292L723,292L725,289L727,288L728,292L731,292L733,295M747,313L741,320L738,322L735,325L735,326L733,328L733,330L730,332L729,334L724,337L722,337L720,339L720,339L704,341L692,341L687,342L681,343L672,343L645,346L645,345L641,345L641,350L619,351L617,351M616,351L615,352M850,285L849,285M863,280L856,283L855,284M827,274L828,272L828,270M826,267L827,265L830,267L828,270L826,267L822,265L818,264L819,262L817,260L814,260M708,222L686,225M632,153L630,151L631,148L627,147L628,144L628,143L628,140L625,138L622,137L623,135L618,134L616,133L614,134L612,134L607,131L590,128L588,124L585,123M603,387L619,386L642,384M625,495L622,493L621,489L619,487L618,485L619,477L606,478L583,479L584,478L583,476L583,475L582,473L585,473L583,470L585,470L584,467L586,466L586,463L589,461L587,461L587,460L589,459L590,457L592,455L593,453L590,453L590,451L593,450L595,448L594,448L593,446L591,445L593,442L591,443L590,441L592,439L590,439L590,437L591,436L591,434L590,435L589,435L589,433M256,154L254,151L253,148L250,148L249,150L250,151L246,150L244,151L243,150L239,150L237,148L235,151L233,150L228,149L227,152L225,149L225,147L224,142L222,140L221,141L219,139L220,134L219,132L217,127L216,123L217,121L215,118L212,121L210,121L208,123L207,120L205,120L206,117L206,115L207,113L209,114L209,111L208,109L208,106L209,106L211,102L213,96L209,96L208,93L205,90L205,88L204,87L203,85L202,82L201,80L198,78L198,77L195,74L197,74L196,72L197,71L197,69L196,67L193,62L198,39M884,165L882,163L882,160L882,158L881,146L881,143L882,141L882,139L883,133L882,129L882,128L885,126L888,122L888,119L886,117L887,113L886,111M858,118L858,122L859,122L859,127L861,129L862,134L861,136L861,140L864,145L864,149L866,148L867,150L870,166L871,168M71,70L72,72L74,74L77,74L80,77L80,80L79,87L80,88L86,91L89,91L94,90L98,91L103,93L103,95L105,94L108,95L112,94L114,95L118,96L123,95L127,95L129,94L131,95L136,96L139,95L171,102L172,107L175,109L176,112L171,118L169,122L167,124L167,126L164,129L162,130L157,137L158,140L161,141L162,143L160,144L160,146L158,150L149,191L122,185L100,179M720,339L727,338L751,335L751,334L756,333L756,334M176,313L176,311L198,201L200,202L228,206L247,210M184,36L178,59L171,92L170,94L171,98L170,100L171,102M198,201L181,198L160,193L149,191"/>
+        <image href="img/truck.png" x="322" y="196" width="336" height="209.4"><title>Lexus GX 550 Overtrail+ in Earth</title></image>
+        <path class="m-ghost" id="m-ghost" d=""/>
+        <path class="m-glow" id="m-glow" d="" pathLength="1" filter="url(#glow)"/>
+        <path class="m-route" id="m-route" d="" pathLength="1"/>
+        <g id="m-cities"></g>
+        <g class="m-head" id="m-head"><circle class="ring" r="9"/><circle class="halo" r="12"/><circle class="core" r="5"/></g>
+      </svg>
+    </div>
+  </div>
+
+  <section id="spots">
+    <h2>Twelve spots. Twelve prices.</h2>
+    <div class="grid">
+      <figure class="diagram" style="margin:0">
+<div class="view"><p class="eyebrow">Driver side</p><svg viewBox="0 0 1614 638" role="img" aria-label="Driver side of the GX 550 with placements H, B, G, J and K outlined">
+<image href="img/v_driver.png" width="1614" height="638"/>
+<polygon class="zone" data-z="H" points="160,252 498,236 502,298 420,298 380,290 230,290 160,290"/>
+<polygon class="zone" data-z="B" points="506,228 1205,222 1205,300 1150,310 1095,400 1085,452 520,452"/>
+<polygon class="zone" data-z="G" points="1212,198 1430,190 1530,217 1535,298 1215,298"/>
+<polygon class="zone" data-z="J" points="475,460 1088,460 1088,500 475,500"/>
+<polygon class="zone" data-z="K" points="575,150 635,150 635,222 575,222"/>
+<g class="tag"><circle cx="330" cy="262" r="30"/><text x="330" y="262">H</text></g>
+<g class="tag"><circle cx="966" cy="337" r="30"/><text x="966" y="337">B</text></g>
+<g class="tag"><circle cx="1370" cy="245" r="30"/><text x="1370" y="245">G</text></g>
+<g class="tag"><circle cx="780" cy="480" r="30"/><text x="780" y="480">J</text></g>
+<g class="tag"><circle cx="605" cy="110" r="30"/><text x="605" y="110">K</text></g>
+</svg></div>
+<div class="view"><p class="eyebrow">Passenger side</p><svg viewBox="0 0 1611 637" role="img" aria-label="Passenger side of the GX 550 with placements H, C, G, J and K outlined">
+<image href="img/v_pass.png" width="1611" height="637"/>
+<polygon class="zone" data-z="H" points="1451,252 1113,236 1109,298 1191,298 1231,290 1381,290 1451,290"/>
+<polygon class="zone" data-z="C" points="1105,228 406,222 406,300 461,310 516,400 526,452 1091,452"/>
+<polygon class="zone" data-z="G" points="399,198 181,190 81,217 76,298 396,298"/>
+<polygon class="zone" data-z="J" points="1136,460 523,460 523,500 1136,500"/>
+<polygon class="zone" data-z="K" points="1036,150 976,150 976,222 1036,222"/>
+<g class="tag"><circle cx="1281" cy="262" r="30"/><text x="1281" y="262">H</text></g>
+<g class="tag"><circle cx="644" cy="337" r="30"/><text x="644" y="337">C</text></g>
+<g class="tag"><circle cx="241" cy="245" r="30"/><text x="241" y="245">G</text></g>
+<g class="tag"><circle cx="831" cy="480" r="30"/><text x="831" y="480">J</text></g>
+<g class="tag"><circle cx="1006" cy="110" r="30"/><text x="1006" y="110">K</text></g>
+</svg></div>
+<div class="pair">
+<div class="view"><p class="eyebrow">Front and roof</p><svg viewBox="0 0 760 950" role="img" aria-label="Front of the GX 550 from above with placements F, E, A and K outlined">
+<image href="img/v_front.png" width="760" height="950"/>
+<polygon class="zone" data-z="F" points="232,24 528,24 545,125 215,125"/>
+<polygon class="zone" data-z="E" points="152,227 600,227 608,267 144,267"/>
+<polygon class="zone" data-z="A" points="95,450 665,450 705,610 570,660 190,660 55,610"/>
+<polygon class="zone" data-z="K" points="15,322 80,322 80,405 15,405"/>
+<polygon class="zone" data-z="K" points="683,322 750,322 750,405 683,405"/>
+<g class="tag"><circle cx="380" cy="74" r="30"/><text x="380" y="74">F</text></g>
+<g class="tag"><circle cx="376" cy="247" r="30"/><text x="376" y="247">E</text></g>
+<g class="tag"><circle cx="380" cy="573" r="30"/><text x="380" y="573">A</text></g>
+<g class="tag"><circle cx="47" cy="285" r="30"/><text x="47" y="285">K</text></g>
+</svg></div>
+<div class="view"><p class="eyebrow">Rear</p><svg viewBox="0 0 741 700" role="img" aria-label="Rear of the GX 550 with placements I, D and L outlined">
+<image href="img/v_rear.png" width="741" height="700"/>
+<polygon class="zone" data-z="I" points="150,102 590,102 615,218 125,218"/>
+<polygon class="zone" data-z="D" points="112,298 628,298 628,420 112,420"/>
+<polygon class="zone" data-z="L" points="40,462 700,462 700,498 40,498"/>
+<g class="tag"><circle cx="370" cy="160" r="30"/><text x="370" y="160">I</text></g>
+<g class="tag"><circle cx="180" cy="360" r="30"/><text x="180" y="360">D</text></g>
+<g class="tag"><circle cx="110" cy="480" r="30"/><text x="110" y="480">L</text></g>
+</svg></div>
+</div>
+<figcaption>Outlines show where each placement sits. Final print sizes are set on the template once the truck is in hand. The tailgate panel works around the license plate.</figcaption>
+</figure>
+      <ul class="spots" id="spotlist"></ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>How it works</h2>
+    <div class="cols">
+      <div><h3>Reserve</h3><p>Pick a spot, enter your brand and work email, and confirm. I verify the request, then mark the spot reserved at the listed price. No card is charged and no invoice is issued at this point.</p></div>
+      <div><h3>Target met</h3><p>When all twelve are reserved, every sponsor is invoiced at once and signs the placement agreement. If the target is not met, the round is cancelled and nobody pays.</p></div>
+      <div><h3>Or take it all</h3><p>One brand can sponsor the whole project for $175,000. Once verified, that locks all twelve spots at once and releases any reservations other brands have already made. This stays open until every spot is reserved.</p></div>
+      <div><h3>On the road</h3><p>The truck is bought, your artwork is printed and installed at my cost, and it stays on for 12 months, including the full lap.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>The lap</h2>
+    <p class="lede">St. Petersburg to St. Petersburg, clockwise. 10,173 routed miles before side trips, planned over 90 days.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Leg</th><th>Through</th><th class="r">Routed miles</th></tr></thead>
+      <tbody>
+        <tr class="legrow" id="leg-0"><td>Atlantic</td><td>Miami, Savannah, Charleston, Outer Banks, New York, Boston, Bar Harbor</td><td class="r">2,186</td></tr>
+        <tr class="legrow" id="leg-1"><td>Northern border</td><td>Vermont, Niagara, Great Lakes, Duluth, North Dakota, Glacier, Seattle</td><td class="r">3,605</td></tr>
+        <tr class="legrow" id="leg-2"><td>Pacific</td><td>Oregon coast, Redwoods, San Francisco, Big Sur, Los Angeles, San Diego</td><td class="r">1,464</td></tr>
+        <tr class="legrow" id="leg-3"><td>Southern border and Gulf</td><td>Yuma, Tucson, El Paso, Big Bend, Brownsville, New Orleans, Pensacola</td><td class="r">2,918</td></tr>
+      </tbody>
+      <tfoot><tr><td>Full lap</td><td></td><td class="r">10,173</td></tr></tfoot>
+    </table></div>
+  </section>
+
+  <section>
+    <h2>Where $175,000 goes</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Line</th><th>What it covers</th><th class="r">Amount</th></tr></thead>
+      <tbody>
+        <tr><td>The truck</td><td>2026 GX 550 Overtrail+ in Earth, Florida sales tax, title and registration</td><td class="r">$96,914</td></tr>
+        <tr><td>90 days on the road</td><td>Hotels, meals for two, premium fuel, insurance</td><td class="r">$33,794</td></tr>
+        <tr><td>Livery</td><td>Design, print and install of all twelve placements</td><td class="r">$7,500</td></tr>
+        <tr><td>Driver</td><td>Three months of driving, filming and posting</td><td class="r">$15,000</td></tr>
+        <tr><td>Reserve</td><td>Contingency, lodging taxes and card processing</td><td class="r">$21,792</td></tr>
+      </tbody>
+      <tfoot><tr><td>Target</td><td></td><td class="r">$175,000</td></tr></tfoot>
+    </table></div>
+  </section>
+
+  <section id="terms">
+    <h2>Terms in short</h2>
+    <ul class="terms">
+      <li>A reservation is a commitment to pay the listed price if all twelve spots are reserved. Nothing is charged before that.</li>
+      <li>One sponsor can take the whole project for $175,000 at any time before all twelve spots are reserved. When that happens every spot is locked, reservations already made by other brands are released, and those brands owe nothing.</li>
+      <li>Placement runs 12 months from the day the livery goes on.</li>
+      <li>You supply vector artwork. I approve it in writing. Adult, tobacco, gambling, weapons and political artwork is declined and the spot is released.</li>
+      <li>Your placement appears in trip content whenever that panel is in frame, with your brand tagged. No view or impression count is guaranteed.</li>
+      <li>If the truck is sold or written off inside 12 months, the unused months are refunded pro rata.</li>
+      <li>The signed agreement, not this page, is the contract.</li>
+    </ul>
+  </section>
+
+  <section class="contact">
+    <h2>Questions</h2>
+    <p class="lede">Write to me directly. Antonio Planzo, LUXURIO LLC, St. Petersburg, Florida.</p>
+    <div class="row"><span class="addr" id="addr"></span><button class="btn ghost" id="copyaddr" type="button">Copy address</button></div>
+  </section>
+</div>
+
+<dialog id="dlg" aria-labelledby="dlgtitle">
+  <form class="stack" id="resform" novalidate>
+    <p class="eyebrow" id="dlgeyebrow"></p>
+    <h2 id="dlgtitle"></h2>
+    <p class="note" id="wholenote" hidden>You take all twelve placements for <b id="wholeprice"></b>. Once I verify your request, every spot is locked and any reservations other brands have already made are released. This is open until all twelve spots are reserved.</p>
+    <div class="field" id="spotfield"><label for="f-spot">Spot</label><select id="f-spot" name="spot"></select></div>
+    <div class="field"><label for="f-brand">Brand</label><input id="f-brand" name="brand" type="text" autocomplete="organization" required></div>
+    <div class="field"><label for="f-site">Website</label><input id="f-site" name="website" type="text" inputmode="url" autocomplete="url" placeholder="yourbrand.com" required></div>
+    <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+    <div class="field"><label for="f-email">Work email</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="you@yourbrand.com" required></div>
+    <label class="check" for="f-agree"><input id="f-agree" name="agree" type="checkbox" required>
+      <span>I confirm this is a legitimate reservation, that I am authorized to make it for this brand, and that I agree to the <a href="#terms" id="termslink">Terms and Conditions</a>. I understand it is a commitment to pay <b id="agreeprice"></b> <span id="agreetail"></span></span></label>
+    <p id="formerr" role="alert" class="err" hidden></p>
+    <div class="row">
+      <button class="btn" id="submitres" type="submit">Reserve this spot</button>
+      <button class="btn ghost" id="closedlg" type="button">Cancel</button>
+    </div>
+  </form>
+  <div class="stack" id="resdone" hidden>
+    <p class="eyebrow" id="doneeyebrow"></p>
+    <h2 id="donetitle">One step left</h2>
+    <p id="doneheld" hidden></p>
+    <div class="stack" id="donesend">
+    <p>Send this reservation from <b id="donefrom"></b> to <span class="addr" id="dlgaddr"></span>. The spot is held once it arrives.</p>
+    <label class="eyebrow" for="msg">Reservation</label>
+    <textarea id="msg" spellcheck="false" readonly></textarea>
+    </div>
+    <div class="row">
+      <button class="btn" id="copymsg" type="button">Copy reservation</button>
+      <button class="btn ghost" id="closedone" type="button">Close</button>
+      <span id="copied" role="status" class="eyebrow"></span>
+    </div>
+  </div>
+</dialog>
+
+<script>
+// ---- Edit here ----
+// To lock a spot after you verify the brand: change that spot's status below from "open" to "reserved".
+// To lock everything for a whole-project sponsor: set WHOLE_SPONSORED to true.
+const CONTACT = "aaplanzo@gmail.com";          // shown on the page
+const MAIL_TO = "aaplanzo@gmail.com";          // where reservation requests are emailed
+const WHOLE_SPONSORED = false;
+const SPOTS = [
+  {k:"A", name:"Hood",                 note:"Largest flat panel. Front of every head-on shot.",        price:30000, status:"open"},
+  {k:"B", name:"Driver-side doors",    note:"Front and rear door, one continuous panel.",              price:25000, status:"open"},
+  {k:"C", name:"Passenger-side doors", note:"Front and rear door, one continuous panel.",              price:25000, status:"open"},
+  {k:"D", name:"Tailgate",             note:"What the car behind reads for 10,000 miles.",             price:20000, status:"open"},
+  {k:"E", name:"Windshield banner",    note:"Top strip of the windshield. In frame on every dash shot.",price:15000, status:"open"},
+  {k:"F", name:"Roof",                 note:"Aft of the moonroof. Seen from the drone.",               price:12000, status:"open"},
+  {k:"G", name:"Rear quarter panels",  note:"Matched pair, both sides.",                               price:12000, status:"open"},
+  {k:"H", name:"Front fenders",        note:"Matched pair, both sides.",                               price:10000, status:"open"},
+  {k:"I", name:"Rear glass",           note:"Perforated film across the tailgate window.",             price:10000, status:"open"},
+  {k:"J", name:"Rocker panels",        note:"Matched pair, low along both sides.",                     price:8000,  status:"open"},
+  {k:"K", name:"Mirror caps",          note:"Matched pair.",                                           price:4000,  status:"open"},
+  {k:"L", name:"Rear bumper",          note:"Strip below the tailgate.",                               price:4000,  status:"open"}
+];
+// ----------------------------------------------------------------------------------------
+const usd = n => "$" + n.toLocaleString("en-US");
+const $ = id => document.getElementById(id);
+const target = SPOTS.reduce((s,x)=>s+x.price,0);
+$("addr").textContent = CONTACT; $("dlgaddr").textContent = CONTACT;
+
+// Which spots are locked comes from the settings above.
+const live = {};                       // spot letter -> true once reserved in the store
+let store = null, uid = null, isOwner = false;
+let sponsored = WHOLE_SPONSORED;                 // true once one brand has taken the whole project
+const isRes = s => sponsored || s.status==="reserved" || !!live[s.k];
+const list = $("spotlist"), rows = {};
+function light(k,on){ document.querySelectorAll('.zone[data-z="'+k+'"]').forEach(z=>z.classList.toggle("on",on)); }
+SPOTS.forEach(s=>{
+  const li = document.createElement("li"); li.className = "spot"; li.id = "spot-"+s.k;
+  const key = document.createElement("span"); key.className="key"; key.textContent=s.k;
+  const mid = document.createElement("div");
+  const h = document.createElement("h3"); h.textContent = s.name;
+  const p = document.createElement("p"); p.textContent = s.note;
+  const rel = document.createElement("button"); rel.type="button"; rel.className="rel"; rel.id="release-"+s.k; rel.hidden=true; rel.textContent="Release this spot";
+  rel.addEventListener("click", async ()=>{
+    if(rel.dataset.armed!=="1"){ rel.dataset.armed="1"; rel.textContent="Click again to release"; return; }
+    rel.dataset.armed=""; rel.textContent="Release this spot";
+    try{ await store.doc("spots/"+s.k).delete(); }catch(e){ rel.textContent="Could not release. Try again."; }
+  });
+  mid.append(h,p,rel);
+  // Mini photo of the view this spot sits on, with only this spot filled in.
+  const VIEW = {A:"front",E:"front",F:"front",K:"front",B:"driver",G:"driver",H:"driver",J:"driver",C:"pass",D:"rear",I:"rear",L:"rear"}[s.k];
+  const src = document.querySelector('.diagram image[href="img/v_'+VIEW+'.png"]'), big = src && src.ownerSVGElement;
+  const SVGNS = "http://www.w3.org/2000/svg";
+  const th = document.createElementNS(SVGNS,"svg"); th.setAttribute("class","thumb"); th.setAttribute("aria-hidden","true");
+  if(big){
+    th.setAttribute("viewBox", big.getAttribute("viewBox"));
+    th.append(src.cloneNode(false));
+    big.querySelectorAll('.zone[data-z="'+s.k+'"]').forEach(z=>{ const c=document.createElementNS(SVGNS,"polygon"); c.setAttribute("points",z.getAttribute("points")); c.setAttribute("class","tz"); th.append(c); });
+  }
+  const buy = document.createElement("div"); buy.className="buy";
+  const pr = document.createElement("span"); pr.className="price num"; pr.textContent = usd(s.price);
+  const b = document.createElement("button"); b.type="button"; b.className="btn"; b.id="reserve-"+s.k;
+  b.addEventListener("click",()=>{ if(!isRes(s)) openDlg("spot", s); });
+  buy.append(pr,b); li.append(key,th,mid,buy);
+  li.addEventListener("mouseenter",()=>light(s.k,true)); li.addEventListener("mouseleave",()=>light(s.k,false));
+  li.addEventListener("focusin",()=>light(s.k,true)); li.addEventListener("focusout",()=>light(s.k,false));
+  list.append(li); rows[s.k]={li,b,rel};
+});
+function render(){
+  const res = SPOTS.filter(isRes), raised = res.reduce((t,x)=>t+x.price,0), open = SPOTS.length-res.length;
+  $("raised").textContent = usd(raised);
+  $("target").textContent = "of " + usd(target) + " reserved";
+  $("barfill").style.width = (raised/target*100).toFixed(1) + "%";
+  $("fundnote").textContent = sponsored ? "One sponsor has taken the whole project. All " + SPOTS.length + " spots are locked."
+    : open ? open + " of " + SPOTS.length + " spots open. The truck is bought the day the target is met."
+           : "All " + SPOTS.length + " spots are reserved. The target is met.";
+  SPOTS.forEach(s=>{
+    const r=rows[s.k], on=isRes(s);
+    r.li.classList.toggle("held",on); r.b.disabled=on; r.b.textContent = on ? "Reserved" : "Reserve";
+    r.b.setAttribute("aria-label", on ? s.name+" is reserved" : "Reserve "+s.name+" for "+usd(s.price));
+    r.rel.hidden = !(on && !sponsored && isOwner && live[s.k] && store);
+    document.querySelectorAll('.zone[data-z="'+s.k+'"]').forEach(z=>z.classList.toggle("held",on));
+  });
+  $("nav-whole").disabled = open===0;
+  $("nav-whole").textContent = sponsored ? "Whole project sponsored" : "Sponsor the whole project";
+}
+render();
+
+// Emails the reservation request to MAIL_TO through FormSubmit. Resolves "held" once it is accepted; throws otherwise.
+async function claim(mode, s, rec){
+  const whole = mode==="whole";
+  const r = await fetch("https://formsubmit.co/ajax/" + MAIL_TO, {method:"POST",
+    headers:{"Content-Type":"application/json","Accept":"application/json"},
+    body: JSON.stringify({
+      _subject: "GX 550 reservation: " + (whole ? "WHOLE PROJECT" : "Spot " + s.k + " " + s.name) + " — " + rec.brand,
+      _replyto: rec.email, _template: "table", _captcha: "false",
+      "Placement": whole ? "Whole project (all twelve spots)" : s.k + " · " + s.name,
+      "Price": usd(rec.price), "Brand": rec.brand, "Website": rec.website, "Name": rec.name, "Work email": rec.email,
+      "Confirmed": "Ticked: legitimate reservation, authorized for the brand, agrees to the Terms and Conditions"
+    })});
+  const d = await r.json();
+  if(r.ok && String(d.success)==="true") return "held";
+  throw new Error(d.message || "failed");
+}
+
+const dlg = $("dlg");
+let current = null;
+const FREE_MAIL = ["gmail.com","googlemail.com","yahoo.com","hotmail.com","outlook.com","live.com","msn.com","icloud.com","me.com","aol.com","proton.me","protonmail.com","gmx.com","mail.com","yandex.com"];
+let mode = "spot";
+function syncSpot(){
+  const s = SPOTS.find(x=>x.k===$("f-spot").value) || null; current = s;
+  if(mode!=="spot" || !s) return;
+  $("dlgeyebrow").textContent = "Spot " + s.k + " · " + usd(s.price);
+  $("agreeprice").textContent = usd(s.price);
+}
+function openDlg(m, s){
+  mode = m; const whole = m==="whole";
+  const open = SPOTS.filter(x=>!isRes(x));
+  if(!open.length) return;
+  const sel=$("f-spot"); sel.textContent="";
+  open.forEach(x=>{ const o=document.createElement("option"); o.value=x.k; o.textContent=x.k+" · "+x.name+" · "+usd(x.price); sel.append(o); });
+  sel.value = (s && !isRes(s)) ? s.k : open[0].k;
+  $("spotfield").hidden = whole; $("wholenote").hidden = !whole;
+  $("dlgtitle").textContent = whole ? "Wanna sponsor the whole project?" : "Reserve a spot";
+  if(whole){
+    current = null;
+    $("dlgeyebrow").textContent = "All twelve spots · " + usd(target);
+    $("wholeprice").textContent = usd(target); $("agreeprice").textContent = usd(target);
+    $("agreetail").textContent = "for all twelve placements, and that once verified it locks every spot and releases other brands' reservations.";
+    $("submitres").textContent = "Sponsor the whole project";
+  } else {
+    $("agreetail").textContent = "if all twelve spots are reserved, and that one sponsor taking the whole project before then releases this reservation.";
+    $("submitres").textContent = "Reserve this spot";
+    syncSpot();
+  }
+  $("resform").hidden = false; $("resdone").hidden = true; $("formerr").hidden = true; $("copied").textContent = "";
+  if(dlg.showModal) dlg.showModal(); else dlg.setAttribute("open","");
+  $("f-brand").focus();
+}
+$("f-spot").addEventListener("change", syncSpot);
+$("nav-whole").addEventListener("click", ()=>{ if(!sponsored) openDlg("whole", null); });
+const CALM = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+function closeDlg(){
+  if(!dlg.hasAttribute("open") || dlg.classList.contains("closing")) return;
+  const finish = () => { dlg.classList.remove("closing"); dlg.close ? dlg.close() : dlg.removeAttribute("open"); };
+  if(CALM) return finish();
+  dlg.classList.add("closing"); setTimeout(finish, 140);
+}
+// Clicking outside the box, or pressing Escape, closes it with the same animation.
+dlg.addEventListener("click", e=>{ if(e.target===dlg) closeDlg(); });
+dlg.addEventListener("cancel", e=>{ e.preventDefault(); closeDlg(); });
+// Buttons and links that point at a section scroll there smoothly.
+document.addEventListener("click", e=>{
+  const a = e.target.closest && e.target.closest('a[href^="#"]'); if(!a) return;
+  const el = document.getElementById(a.getAttribute("href").slice(1)); if(!el) return;
+  e.preventDefault(); closeDlg();
+  setTimeout(()=>el.scrollIntoView({behavior: CALM ? "auto" : "smooth", block:"start"}), dlg.hasAttribute("open") ? 150 : 0);
+});
+function fail(msg, field){ const e=$("formerr"); e.textContent=msg; e.hidden=false; if(field) field.focus(); }
+$("resform").addEventListener("submit", async ev=>{
+  ev.preventDefault();
+  const brand=$("f-brand").value.trim(), site=$("f-site").value.trim(), name=$("f-name").value.trim(), email=$("f-email").value.trim().toLowerCase();
+  if(!brand) return fail("Enter the brand name.", $("f-brand"));
+  if(!/^(https?:\/\/)?[a-z0-9-]+(\.[a-z0-9-]+)+(\/\S*)?$/i.test(site)) return fail("Enter the brand's website, like yourbrand.com.", $("f-site"));
+  if(!name) return fail("Enter your name.", $("f-name"));
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return fail("Enter a valid work email address.", $("f-email"));
+  if(FREE_MAIL.includes(email.split("@")[1])) return fail("Use your work email, not a personal address.", $("f-email"));
+  if(!$("f-agree").checked) return fail("Tick the box to confirm the reservation and agree to the Terms and Conditions.", $("f-agree"));
+  const whole = mode==="whole", s = current;
+  const GONE = whole ? "The whole project has just been sponsored by another brand." : "That spot has just been reserved. Pick another.";
+  if(sponsored) return fail("One sponsor has taken the whole project, so every spot is locked.");
+  if(whole && SPOTS.every(isRes)) return fail("All twelve spots are already reserved, so whole-project sponsorship is closed.");
+  if(!whole && (!s || isRes(s))) return fail(GONE, $("f-spot"));
+  const price = whole ? target : s.price, label = whole ? "Whole project, all twelve spots" : "Spot " + s.k + ", " + s.name;
+  const rec={spot: whole ? "Whole project" : s.name, price, brand, website:site, name, email, agreed:true, at:new Date().toISOString()};
+  const idle = $("submitres").textContent;
+  let outcome="send";
+  if(MAIL_TO){
+    const btn=$("submitres"); btn.disabled=true; btn.textContent="Sending…";
+    try{ outcome = await claim(mode, s, rec); }catch(e){ outcome="send"; }
+    btn.disabled=false; btn.textContent=idle;
+  }
+  if(outcome==="taken") return fail(GONE);
+  if(outcome==="closed") return fail("All twelve spots are already reserved, so whole-project sponsorship is closed.");
+  $("msg").value = "Subject: GX 550 reservation, " + label + "\n\n" +
+    "Reserving: " + label + "\nPrice: " + usd(price) + "\n\n" +
+    "Brand: " + brand + "\nWebsite: " + site + "\nName: " + name + "\nWork email: " + email + "\n\n" +
+    "I confirm this is a legitimate reservation, that I am authorized to make it for " + brand + ", and that I agree to the Terms and Conditions. " +
+    "I understand it is a commitment to pay " + usd(price) + " " + $("agreetail").textContent;
+  const held = outcome==="held";
+  $("doneeyebrow").textContent = label + " · " + usd(price);
+  $("donetitle").textContent = held ? "Request sent" : "One step left";
+  $("doneheld").textContent = whole
+    ? "Your request to sponsor the whole project is in. I verify each request by hand, then lock all twelve spots and write to " + email + " with the sponsorship agreement."
+    : "Your request for this spot is in. I verify each request by hand, then mark the spot reserved and write to " + email + " with the placement agreement. Nothing is charged unless all twelve spots are reserved.";
+  $("doneheld").hidden = !held; $("donesend").hidden = held; $("copymsg").hidden = held;
+  $("donefrom").textContent = email;
+  $("resform").hidden = true; $("resdone").hidden = false; $("closedone").focus();
+  if(held){ $("resform").reset(); }
+});
+function copy(text, field, done){
+  const ok = () => done("Copied");
+  const fallback = () => { if(field){ field.focus(); field.select(); } done("Select and copy"); };
+  try { navigator.clipboard.writeText(text).then(ok, fallback); } catch(e){ fallback(); }
+}
+$("copymsg").addEventListener("click",()=>copy($("msg").value, $("msg"), t=>$("copied").textContent=t));
+$("closedlg").addEventListener("click",closeDlg); $("closedone").addEventListener("click",closeDlg);
+$("copyaddr").addEventListener("click",e=>copy(CONTACT, null, t=>{ e.target.textContent = t==="Copied" ? "Copied" : "Copy address"; }));
+// ---- The lap: animated route map ----
+(function(){
+  const PTS = [["St. Petersburg",766.5,535.5],["",788.9,569.3],["Miami",822.8,572.6],["",793.7,498.4],["",777.3,475.2],["",782.1,434.2],["Charleston",801.3,414.8],["",817,390.9],["",832.2,375.6],["",866,328.2],["",855.4,309.6],["",863.7,272.9],["",869.8,247.5],["New York",869.8,215.8],["",906.2,180.5],["Boston",908.7,167.1],["",913.6,135],["Bar Harbor",941.1,109.7],["",929.5,103.5],["",862.5,129],["",822.4,150.1],["Niagara Falls",776,179.7],["",762.6,204.3],["",738.4,222.8],["",706.7,223.8],["Detroit",713.1,207.3],["",676.1,132.9],["",632.5,120.1],["Duluth",558.8,119.3],["",537.3,79.3],["",482.2,94.8],["",417.2,85.8],["",381.8,85.2],["",291.1,66],["Glacier",226.5,56.3],["",187.2,53.2],["",171,63.9],["Seattle",97.7,46.2],["",66.2,70.5],["",47.6,117.3],["",31.2,165.2],["",25.4,186.4],["San Francisco",34.8,261.5],["",36.6,289.9],["Big Sur",44.5,316.8],["",62.5,348.5],["Los Angeles",82.2,362.8],["San Diego",99.8,397.4],["",146.8,408.1],["Tucson",213.3,430.8],["",292.9,439.4],["El Paso",296.9,452.7],["Big Bend",341.4,490.2],["",401.1,515.9],["",427.3,558.5],["Brownsville",467.1,596.3],["",469.8,553.5],["Houston",510.4,509.2],["",575.9,497.2],["New Orleans",614.4,501.3],["",652.8,481.7],["",669.2,486.4],["",700.2,489.2],["",740.8,485.2],["",763.9,510],["",766.5,535.5]];
+  const LEG_END = [17,37,47,65], LEG_MI = [0,2186,5791,7255,10173], LEGS = ["Atlantic","Northern border","Pacific","Southern border and Gulf"];
+  const LABEL = {"St. Petersburg":[-13,24,"end",0],"Miami":[11,6,"start",0],"Charleston":[11,6,"start",1],"New York":[11,6,"start",0],"Boston":[11,4,"start",1],
+    "Bar Harbor":[-12,-9,"end",0],"Niagara Falls":[0,-13,"middle",1],"Detroit":[0,25,"middle",1],"Duluth":[0,-13,"middle",1],"Glacier":[0,25,"middle",1],
+    "Seattle":[13,6,"start",0],"San Francisco":[13,6,"start",0],"Big Sur":[13,6,"start",1],"Los Angeles":[13,-2,"start",1],"San Diego":[13,16,"start",0],
+    "Tucson":[0,26,"middle",1],"El Paso":[0,-13,"middle",0],"Big Bend":[0,-13,"middle",1],"Brownsville":[11,6,"start",1],"Houston":[0,-13,"middle",1],"New Orleans":[0,27,"middle",1]};
+  const NS = "http://www.w3.org/2000/svg";
+  const d = PTS.map((p,i)=>(i?"L":"M")+p[1]+" "+p[2]).join("");
+  ["m-ghost","m-glow","m-route"].forEach(id=>document.getElementById(id).setAttribute("d",d));
+  const cum=[0]; for(let i=1;i<PTS.length;i++) cum.push(cum[i-1]+Math.hypot(PTS[i][1]-PTS[i-1][1],PTS[i][2]-PTS[i-1][2]));
+  const total=cum[cum.length-1];
+  const cities=[]; const g=document.getElementById("m-cities");
+  PTS.forEach((p,i)=>{ const L=LABEL[p[0]]; if(!L) return;
+    const el=document.createElementNS(NS,"g"); el.setAttribute("class","m-city"+(L[3]?" minor":""));
+    const c=document.createElementNS(NS,"circle"); c.setAttribute("cx",p[1]); c.setAttribute("cy",p[2]); c.setAttribute("r",4.5);
+    const t=document.createElementNS(NS,"text"); t.setAttribute("x",p[1]+L[0]); t.setAttribute("y",p[2]+L[1]); t.setAttribute("text-anchor",L[2]); t.textContent=p[0];
+    el.append(c,t); g.append(el); cities.push({el,at:cum[i]/total,first:i===0});
+  });
+  const route=document.getElementById("m-route"), glow=document.getElementById("m-glow"), head=document.getElementById("m-head");
+  const hMi=document.getElementById("hud-mi"), hDay=document.getElementById("hud-day"), hLeg=document.getElementById("hud-leg");
+  const rows=[0,1,2,3].map(i=>document.getElementById("leg-"+i));
+  function at(len){ let i=1; while(i<cum.length-1 && cum[i]<len) i++; const a=PTS[i-1], b=PTS[i], f=(len-cum[i-1])/((cum[i]-cum[i-1])||1); return [a[1]+(b[1]-a[1])*f, a[2]+(b[2]-a[2])*f]; }
+  function miles(len){ let k=0; while(k<3 && len>cum[LEG_END[k]]) k++; const l0=k?cum[LEG_END[k-1]]:0, l1=cum[LEG_END[k]]; return [LEG_MI[k]+(LEG_MI[k+1]-LEG_MI[k])*(len-l0)/(l1-l0), k]; }
+  function draw(p, running){
+    const len=total*p, xy=at(len), mk=miles(len);
+    route.style.strokeDashoffset=glow.style.strokeDashoffset=String(1-p);
+    head.setAttribute("transform","translate("+xy[0].toFixed(1)+" "+xy[1].toFixed(1)+")");
+    hMi.textContent=Math.round(mk[0]).toLocaleString("en-US");
+    hDay.textContent=Math.max(1,Math.ceil(p*90))+" / 90";
+    hLeg.textContent = running ? LEGS[mk[1]] : "Home";
+    rows.forEach((r,i)=>r&&r.classList.toggle("active",running&&i===mk[1]));
+    cities.forEach(c=>{ const hit=p>=c.at-0.002; c.el.classList.toggle("wait",running&&!hit&&!c.first); c.el.classList.toggle("hit",hit||c.first); });
+  }
+  let raf=0;
+  function play(){
+    cancelAnimationFrame(raf); const t0=performance.now(), DUR=18000;
+    (function tick(now){ const p=Math.min(1,Math.max(0,(now-t0)/DUR)); draw(p,p<1); if(p<1) raf=requestAnimationFrame(tick); })(t0);
+  }
+  draw(1,false);
+  document.getElementById("replay").addEventListener("click",play);
+  const calm = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(!calm && "IntersectionObserver" in window){
+    const io=new IntersectionObserver(es=>{ if(es.some(e=>e.isIntersecting)){ io.disconnect(); play(); } },{threshold:.5});
+    io.observe(document.getElementById("lapmap"));
+  }
+})();
+</script>
+</body>
+</html>
