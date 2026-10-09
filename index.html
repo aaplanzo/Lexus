@@ -335,8 +335,8 @@ tr.legrow td{transition:color .3s} tr.legrow.active td{color:var(--go);font-weig
     <p class="note" id="wholenote" hidden>You take all twelve placements for <b id="wholeprice"></b>. Once I verify your request, every spot is locked and any reservations other brands have already made are released. This is open until all twelve spots are reserved.</p>
     <div class="field" id="spotfield"><label for="f-spot">Spot</label><select id="f-spot" name="spot"></select></div>
     <div class="field"><label for="f-brand">Brand</label><input id="f-brand" name="brand" type="text" autocomplete="organization" required></div>
-    <div class="field"><label for="f-site">Website</label><input id="f-site" name="website" type="text" inputmode="url" autocomplete="url" placeholder="yourbrand.com" required></div>
     <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+    <div class="field"><label for="f-phone">Phone number</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(555) 555-0100" required></div>
     <div class="field"><label for="f-email">Work email</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="you@yourbrand.com" required></div>
     <label class="check" for="f-agree"><input id="f-agree" name="agree" type="checkbox" required>
       <span>I confirm this is a legitimate reservation, that I am authorized to make it for this brand, and that I agree to the <a href="#terms" id="termslink">Terms and Conditions</a>. I understand it is a commitment to pay <b id="agreeprice"></b> <span id="agreetail"></span></span></label>
@@ -458,7 +458,7 @@ async function claim(mode, s, rec){
       _subject: "GX 550 reservation: " + (whole ? "WHOLE PROJECT" : "Spot " + s.k + " " + s.name) + " — " + rec.brand,
       _replyto: rec.email, _template: "table", _captcha: "false",
       "Placement": whole ? "Whole project (all twelve spots)" : s.k + " · " + s.name,
-      "Price": usd(rec.price), "Brand": rec.brand, "Website": rec.website, "Name": rec.name, "Work email": rec.email,
+      "Price": usd(rec.price), "Brand": rec.brand, "Name": rec.name, "Phone": rec.phone, "Work email": rec.email, "Website (from email)": rec.website,
       "Confirmed": "Ticked: legitimate reservation, authorized for the brand, agrees to the Terms and Conditions"
     })});
   const d = await r.json();
@@ -522,10 +522,11 @@ document.addEventListener("click", e=>{
 function fail(msg, field){ const e=$("formerr"); e.textContent=msg; e.hidden=false; if(field) field.focus(); }
 $("resform").addEventListener("submit", async ev=>{
   ev.preventDefault();
-  const brand=$("f-brand").value.trim(), site=$("f-site").value.trim(), name=$("f-name").value.trim(), email=$("f-email").value.trim().toLowerCase();
+  const brand=$("f-brand").value.trim(), name=$("f-name").value.trim(), phone=$("f-phone").value.trim(), email=$("f-email").value.trim().toLowerCase();
   if(!brand) return fail("Enter the brand name.", $("f-brand"));
-  if(!/^(https?:\/\/)?[a-z0-9-]+(\.[a-z0-9-]+)+(\/\S*)?$/i.test(site)) return fail("Enter the brand's website, like yourbrand.com.", $("f-site"));
   if(!name) return fail("Enter your name.", $("f-name"));
+  const digits = phone.replace(/\D/g,"");
+  if(!/^[0-9+().\-\s]+$/.test(phone) || digits.length<10 || digits.length>15) return fail("Enter a phone number I can call, with area code.", $("f-phone"));
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return fail("Enter a valid work email address.", $("f-email"));
   if(FREE_MAIL.includes(email.split("@")[1])) return fail("Use your work email, not a personal address.", $("f-email"));
   if(!$("f-agree").checked) return fail("Tick the box to confirm the reservation and agree to the Terms and Conditions.", $("f-agree"));
@@ -535,19 +536,20 @@ $("resform").addEventListener("submit", async ev=>{
   if(whole && SPOTS.every(isRes)) return fail("All twelve spots are already reserved, so whole-project sponsorship is closed.");
   if(!whole && (!s || isRes(s))) return fail(GONE, $("f-spot"));
   const price = whole ? target : s.price, label = whole ? "Whole project, all twelve spots" : "Spot " + s.k + ", " + s.name;
-  const rec={spot: whole ? "Whole project" : s.name, price, brand, website:site, name, email, agreed:true, at:new Date().toISOString()};
+  const rec={spot: whole ? "Whole project" : s.name, price, brand, name, phone, email, website: email.split("@")[1], agreed:true, at:new Date().toISOString()};
   const idle = $("submitres").textContent;
   let outcome="send";
   if(MAIL_TO){
     const btn=$("submitres"); btn.disabled=true; btn.textContent="Sending…";
-    try{ outcome = await claim(mode, s, rec); }catch(e){ outcome="send"; }
+    try{ outcome = await claim(mode, s, rec); }catch(e){ outcome="error"; }
     btn.disabled=false; btn.textContent=idle;
   }
+  if(outcome==="error") return fail("Your request could not be sent. Please try again in a moment, or email " + CONTACT + ".");
   if(outcome==="taken") return fail(GONE);
   if(outcome==="closed") return fail("All twelve spots are already reserved, so whole-project sponsorship is closed.");
   $("msg").value = "Subject: GX 550 reservation, " + label + "\n\n" +
     "Reserving: " + label + "\nPrice: " + usd(price) + "\n\n" +
-    "Brand: " + brand + "\nWebsite: " + site + "\nName: " + name + "\nWork email: " + email + "\n\n" +
+    "Brand: " + brand + "\nName: " + name + "\nPhone: " + phone + "\nWork email: " + email + "\n\n" +
     "I confirm this is a legitimate reservation, that I am authorized to make it for " + brand + ", and that I agree to the Terms and Conditions. " +
     "I understand it is a commitment to pay " + usd(price) + " " + $("agreetail").textContent;
   const held = outcome==="held";
